@@ -10,7 +10,7 @@ import xarray as xr
  base_path / data / raw / source
 """
 
-base_path = Path("C:/Users/Timus/Dropbox/Coding/Windows/Python/Health")
+base_path = Path("/Users/me/...")
 data_path = base_path / "data"
 raw_data_path = data_path / "raw"
 source_data_path = raw_data_path / "source"
