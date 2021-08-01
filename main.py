@@ -27,7 +27,7 @@ raw_data_path.
 
 
 def suffix_check():
-    """Check what kind of files are in the sub-folders of raw_data_path"""
+    """ Check what kind of files are in the sub-folders of raw_data_path """
     suffixes = set()
     for file_path in source_data_path.glob("**/*.*"):
         suffixes.add(file_path.suffix)
@@ -52,18 +52,18 @@ def log(message):
 
 
 def file_to_json(infile_path):
-    """Load one JSON-file"""
+    """ Load one JSON-file """
     with open(infile_path, "r", encoding="utf_8") as json_file:
         return json.load(json_file)
 
 
 def files_to_json(file_list):
-    """Read all the files in the list into one JSON-structure"""
+    """ Read all the files in the list into one JSON-structure """
     return sum((file_to_json(infile_path) for infile_path in file_list), [])
 
 
 def files_to_df(file_list, columns, datetime=True):
-    """Read all the files in the list into a DataFrame"""
+    """ Read all the files in the list into a DataFrame """
     df = pd.json_normalize(files_to_json(file_list)).rename(columns=columns)
     if datetime:
         df.datetime = pd.to_datetime(df.datetime)
